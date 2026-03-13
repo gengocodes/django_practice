@@ -14,3 +14,9 @@ class Drinks(models.Model):
     price = models.IntegerField()
     category_id = models.ForeignKey(DrinksCategory, on_delete=models.PROTECT, default=None)
 
+class Booking(models.Model):
+    first_name = models.CharField(max_length=200)
+    last_name = models.CharField(max_length=200)
+    guest_count = models.IntegerField()
+    reservation_time = models.DateTimeField(auto_now=True)
+    comments = models.CharField(max_length=1000)
