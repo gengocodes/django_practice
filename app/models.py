@@ -6,6 +6,13 @@ class Menuitems(models.Model):
     course = models.CharField(max_length=300)
     year = models.IntegerField()
 
+class Menu(models.Model):
+    name = models.CharField(max_length=200)
+    price = models.IntegerField()
+
+    def __str__(self):
+        return self.name
+
 class DrinksCategory(models.Model):
     category_name = models.CharField(max_length=200)
 
