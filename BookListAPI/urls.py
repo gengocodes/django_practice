@@ -5,6 +5,6 @@ urlpatterns = [
     # path('books/', views.books),
     path('books', views.BookList.as_view()),
     path('books/<int:pk>', views.Book.as_view()),
-    path('menu-items', views.MenuItemList.as_view()),
-    path('menu-items/<int:pk>', views.SingleMenuItem.as_view()),
+    path('categories', views.CategoriesView.as_view()),
+    path('menu-items', views.MenuItemsView.as_view()),
 ]
