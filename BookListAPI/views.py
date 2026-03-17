@@ -1,8 +1,10 @@
 from django.shortcuts import render
 from rest_framework.response import Response
-from rest_framework import status
+from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
+from .models import MenuItem
+from .serializer import MenuItemSerializer
 
 # Create your views here.
 @api_view()
@@ -26,3 +28,11 @@ class Book(APIView):
     
     def put(self, request, pk):
         return Response({'title': request.data.get('title')}, status=status.HTTP_200_OK)
+
+class MenuItemList(generics.ListCreateAPIView):
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
+
+class SingleMenuItem(generics.RetrieveUpdateDestroyAPIView):
+    queryset = MenuItem.objects.all()
+    serializer_class = MenuItemSerializer
