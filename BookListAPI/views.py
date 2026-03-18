@@ -3,8 +3,9 @@ from rest_framework.response import Response
 from rest_framework import status, generics
 from rest_framework.decorators import api_view
 from rest_framework.views import APIView
-from .models import MenuItem, Category
-from .serializer import MenuItemSerializer, CategorySerializer
+from rest_framework.permissions import IsAuthenticated
+from .models import MenuItem, Category, Rating
+from .serializer import MenuItemSerializer, CategorySerializer, RatingSerializer
 
 # Create your views here.
 @api_view()
@@ -43,3 +44,13 @@ class MenuItemsView(generics.ListCreateAPIView):
 class SingleMenuItem(generics.RetrieveUpdateDestroyAPIView):
     queryset = MenuItem.objects.all()
     serializer_class = MenuItemSerializer
+
+class RatingsView(generics.ListCreateAPIView):
+    queryset = Rating.objects.all()
+    serializer_class = RatingSerializer
+
+    def get_permissions(self):
+        if(self.request.method=='GET'):
+            return []
+
+        return [IsAuthenticated()]

@@ -7,4 +7,5 @@ urlpatterns = [
     path('books/<int:pk>', views.Book.as_view()),
     path('categories', views.CategoriesView.as_view()),
     path('menu-items', views.MenuItemsView.as_view()),
+    path('ratings', views.RatingsView.as_view()),
 ]
